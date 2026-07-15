@@ -32,8 +32,8 @@ public class BookController {
     }
 
     @GetMapping(value = "/{id}", produces = "application/json")
-    public Book get(@PathVariable Long book_id) {
-        return bookService.get(book_id);
+    public Book get(@PathVariable Long id) {
+        return bookService.get(id);
     }
 
     @PutMapping(value = "/{id}", consumes = "application/json", produces = "application/json")
