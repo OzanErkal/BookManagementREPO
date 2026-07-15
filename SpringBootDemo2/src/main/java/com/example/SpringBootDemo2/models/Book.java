@@ -63,4 +63,28 @@ public class Book {
         this.author = author;
     }
 
+    public Date getPublished_date() {
+        return published_date;
+    }
+
+    public void setPublished_date(Date published_date) {
+        this.published_date = published_date;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public int getAvailable_copies() {
+        return available_copies;
+    }
+
+    public void setAvailable_copies(int available_copies) {
+        this.available_copies = available_copies;
+    }
+
 }
