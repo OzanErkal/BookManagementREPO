@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Past;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -15,7 +16,7 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "book_id")
-    private Long book_id;
+    private int book_id;
     @NotBlank
     @Column(name = "title")
     private String title;
@@ -24,7 +25,7 @@ public class Book {
     private String author;
     @Past
     @Column(name = "published_date")
-    private Date published_date;
+    private LocalDate published_date;
     @Column(name = "genre")
     private String genre;
     @Column(name = "available_copies")
@@ -34,16 +35,16 @@ public class Book {
     public Book() {
     }
 
-    public Book(String title, String author) {
+    public Book(String title, String author, LocalDate published_date, String genre, int available_copies) {
         this.title = title;
         this.author = author;
     }
 
-    public Long getBook_id() {
+    public int getBook_id() {
         return book_id;
     }
 
-    public void setBook_id(Long book_id) {
+    public void setBook_id(int book_id) {
         this.book_id = book_id;
     }
 
@@ -63,11 +64,11 @@ public class Book {
         this.author = author;
     }
 
-    public Date getPublished_date() {
+    public LocalDate getPublished_date() {
         return published_date;
     }
 
-    public void setPublished_date(Date published_date) {
+    public void setPublished_date(LocalDate published_date) {
         this.published_date = published_date;
     }
 

@@ -32,17 +32,17 @@ public class BookController {
     }
 
     @GetMapping(value = "/{id}", produces = "application/json")
-    public Book get(@PathVariable Long id) {
+    public Book get(@PathVariable int id) {
         return bookService.get(id);
     }
 
     @PutMapping(value = "/{id}", consumes = "application/json", produces = "application/json")
-    public Book update(@PathVariable Long id, @RequestBody @Valid Book book) {
+    public Book update(@PathVariable int id, @RequestBody @Valid Book book) {
         return bookService.update(id, book);
     }
 
     @DeleteMapping(value = "/{id}", produces = "application/json")
-    public void delete(@PathVariable Long id) {
+    public void delete(@PathVariable int id) {
         bookService.delete(id);
     }
 }

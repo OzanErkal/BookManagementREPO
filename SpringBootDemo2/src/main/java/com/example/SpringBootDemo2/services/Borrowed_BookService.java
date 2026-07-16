@@ -43,7 +43,7 @@ public class Borrowed_BookService {
         return borrowed_bookRepository.save(borrow);
     }
 
-    public Borrowed_Book get(Long borrow_id) {
+    public Borrowed_Book get(int borrow_id) {
 
         Optional<Borrowed_Book> borrowOptional = borrowed_bookRepository.findById(borrow_id);
         if (borrowOptional.isEmpty()) {
@@ -54,7 +54,7 @@ public class Borrowed_BookService {
         return borrowOptional.get();
     }
 
-    public Borrowed_Book update(Long borrow_id, Borrowed_Book borrow) {
+    public Borrowed_Book update(int borrow_id, Borrowed_Book borrow) {
         Optional<Borrowed_Book> borrowOptional = borrowed_bookRepository.findById(borrow_id);
         if (borrowOptional.isEmpty()) {
             log.error("Book Not Found");
@@ -70,7 +70,7 @@ public class Borrowed_BookService {
         return borrowed_bookRepository.save(existingBorrow  );
     }
 
-    public void delete(Long borrow_id) {
+    public void delete(int borrow_id) {
         borrowed_bookRepository.deleteById(borrow_id);
         log.warn("Borrowed Book Deleted");
     }

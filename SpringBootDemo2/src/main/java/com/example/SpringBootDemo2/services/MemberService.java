@@ -26,7 +26,7 @@ public class MemberService {
         return memberRepository.save(member);
     }
 
-    public Member get(Long member_id) {
+    public Member get(int member_id) {
 
         Optional<Member> memberOptional = memberRepository.findById(member_id);
         if (memberOptional.isEmpty()) {
@@ -37,7 +37,7 @@ public class MemberService {
         return memberOptional.get();
     }
 
-    public Member update(Long member_id, Member member) {
+    public Member update(int member_id, Member member) {
         Optional<Member> memberOptional = memberRepository.findById(member_id);
         if (memberOptional.isEmpty()) {
             log.error("Member Not Found when updating for Member ID: {}", member_id);
@@ -51,7 +51,7 @@ public class MemberService {
         return memberRepository.save(existingmember);
     }
 
-    public void delete(Long member_id) {
+    public void delete(int member_id) {
         memberRepository.deleteById(member_id);
         log.warn("Member Deleted");
     }

@@ -12,7 +12,7 @@ import java.util.List;
 
 
 @Repository
-public interface Borrowed_BookRepository extends JpaRepository<Borrowed_Book, Long> {
+public interface Borrowed_BookRepository extends JpaRepository<Borrowed_Book, Integer> {
     List<Borrowed_Book> findByMember_Name(String memberName);
 
     @Query("SELECT new com.example.SpringBootDemo2.DTO.BorrowedBookDTO(b.title, m.name, b.author) " +

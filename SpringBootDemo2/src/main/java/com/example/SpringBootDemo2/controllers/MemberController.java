@@ -33,17 +33,17 @@ public class MemberController {
     }
 
     @GetMapping(value = "/{id}", produces = "application/json")
-    public Member get(@PathVariable Long id) {
+    public Member get(@PathVariable int id) {
         return memberService.get(id);
     }
 
     @PutMapping(value = "/{id}", consumes = "application/json", produces = "application/json")
-    public Member update(@PathVariable Long id, @RequestBody @Valid Member member) {
+    public Member update(@PathVariable int id, @RequestBody @Valid Member member) {
         return memberService.update(id, member);
     }
 
     @DeleteMapping(value = "/{id}", produces = "application/json")
-    public void delete(@PathVariable Long id) {
+    public void delete(@PathVariable int id) {
         memberService.delete(id);
     }
 }

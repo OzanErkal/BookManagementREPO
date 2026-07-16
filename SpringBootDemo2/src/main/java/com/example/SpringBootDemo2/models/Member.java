@@ -24,7 +24,7 @@ public class Member {
     @Past
     private Date join_date;
 
-    public long getMember_id() {
+    public int getMember_id() {
         return member_id;
     }
 

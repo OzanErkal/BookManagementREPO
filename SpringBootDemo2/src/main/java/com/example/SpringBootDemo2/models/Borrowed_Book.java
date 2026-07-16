@@ -11,9 +11,8 @@ public class Borrowed_Book {
 
     @Id
     @Column(name = "borrow_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int borrow_id;
-
-
 
     @ManyToOne
     @JoinColumn(name = "book_id")

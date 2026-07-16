@@ -33,17 +33,17 @@ public class Borrowed_BookController {
     }
 
     @GetMapping(value = "/id/{id}", produces = "application/json")
-    public Borrowed_Book get(@PathVariable Long id) {
+    public Borrowed_Book get(@PathVariable int id) {
         return borrowed_bookService.get(id);
     }
 
     @PutMapping(value = "/id/{id}", consumes = "application/json", produces = "application/json")
-    public Borrowed_Book update(@PathVariable Long id, @RequestBody @Valid Borrowed_Book book) {
+    public Borrowed_Book update(@PathVariable int id, @RequestBody @Valid Borrowed_Book book) {
         return borrowed_bookService.update(id, book);
     }
 
     @DeleteMapping(value = "/id/{id}", produces = "application/json")
-    public void delete(@PathVariable Long id) {
+    public void delete(@PathVariable int id) {
         borrowed_bookService.delete(id);
     }
 
