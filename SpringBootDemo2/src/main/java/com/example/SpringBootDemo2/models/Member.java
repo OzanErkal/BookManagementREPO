@@ -7,6 +7,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Past;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -22,7 +23,17 @@ public class Member {
     @Email
     private String email;
     @Past
-    private Date join_date;
+    private LocalDate join_date;
+
+    public Member(String name, String email, LocalDate join_date) {
+        this.name = name;
+        this.email = email;
+        this.join_date = join_date;
+    }
+
+    public Member() {
+
+    }
 
     public int getMember_id() {
         return member_id;
@@ -48,11 +59,11 @@ public class Member {
         this.email = email;
     }
 
-    public Date getJoin_date() {
+    public LocalDate getJoin_date() {
         return join_date;
     }
 
-    public void setJoin_date(Date join_date) {
+    public void setJoin_date(LocalDate join_date) {
         this.join_date = join_date;
     }
 

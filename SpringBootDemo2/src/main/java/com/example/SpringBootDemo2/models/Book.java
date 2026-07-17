@@ -38,6 +38,9 @@ public class Book {
     public Book(String title, String author, LocalDate published_date, String genre, int available_copies) {
         this.title = title;
         this.author = author;
+        this.published_date = published_date;
+        this.genre = genre;
+        this.available_copies = available_copies;
     }
 
     public int getBook_id() {

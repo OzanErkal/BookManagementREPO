@@ -38,10 +38,10 @@ class BookServiceTest {
         Book savedBook = bookService.save(book);
 
         assertEquals(book.getBook_id(), savedBook.getBook_id());
-        assertEquals(book.getTitle(), savedBook.getTitle());
-        assertEquals(book.getAuthor(), savedBook.getAuthor());
-        assertEquals(book.getGenre(), savedBook.getGenre());
-        assertEquals(book.getPublished_date(), savedBook.getPublished_date());
+        assertEquals("title1", savedBook.getTitle());
+        assertEquals("author1", savedBook.getAuthor());
+        assertEquals("genre1", savedBook.getGenre());
+        assertEquals(LocalDate.now(), savedBook.getPublished_date());
 
     }
 
@@ -57,8 +57,8 @@ class BookServiceTest {
 
         assertNotNull(result);
         assertEquals(books.size(), result.size());
-        assertEquals(books.get(0).getBook_id(), result.get(0).getBook_id());
-        assertEquals(books.get(1).getBook_id(), result.get(1).getBook_id());
+        assertEquals(books.get(0).getTitle(), result.get(0).getTitle());
+        assertEquals(books.get(1).getTitle(), result.get(1).getTitle());
         verify(bookRepository, times(1)).findAll();
 
 
