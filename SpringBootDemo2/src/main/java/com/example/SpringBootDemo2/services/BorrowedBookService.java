@@ -2,10 +2,10 @@ package com.example.SpringBootDemo2.services;
 
 import com.example.SpringBootDemo2.DTO.BorrowedBookDTO;
 import com.example.SpringBootDemo2.models.Book;
-import com.example.SpringBootDemo2.models.Borrowed_Book;
+import com.example.SpringBootDemo2.models.BorrowedBook;
 import com.example.SpringBootDemo2.models.Member;
 import com.example.SpringBootDemo2.repositories.BookRepository;
-import com.example.SpringBootDemo2.repositories.Borrowed_BookRepository;
+import com.example.SpringBootDemo2.repositories.BorrowedBookRepository;
 import com.example.SpringBootDemo2.repositories.MemberRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,21 +17,21 @@ import java.util.Optional;
 
 @Service
 @Slf4j
-public class Borrowed_BookService {
+public class BorrowedBookService {
 
     @Autowired
-    private Borrowed_BookRepository borrowed_bookRepository;
+    private BorrowedBookRepository borrowed_bookRepository;
     @Autowired
     private BookRepository bookRepository;
     @Autowired
     private MemberRepository memberRepository;
 
-    public List<Borrowed_Book> list() {
+    public List<BorrowedBook> list() {
         log.info("All Borrowed Books Listed");
         return borrowed_bookRepository.findAll();
     }
 
-    public Borrowed_Book save(Borrowed_Book borrow) {
+    public BorrowedBook save(BorrowedBook borrow) {
         Book book = bookRepository.findById(borrow.getBook().getBook_id())
                 .orElseThrow(() -> new RuntimeException("Book not found"));
         borrow.setBook(book);
@@ -43,9 +43,9 @@ public class Borrowed_BookService {
         return borrowed_bookRepository.save(borrow);
     }
 
-    public Borrowed_Book get(Long borrow_id) {
+    public BorrowedBook get(int borrow_id) {
 
-        Optional<Borrowed_Book> borrowOptional = borrowed_bookRepository.findById(borrow_id);
+        Optional<BorrowedBook> borrowOptional = borrowed_bookRepository.findById(borrow_id);
         if (borrowOptional.isEmpty()) {
             log.error("Borrowed Book Not Found for Borrow_ID: {}", borrow_id);
             throw new ResponseStatusException(
@@ -54,14 +54,14 @@ public class Borrowed_BookService {
         return borrowOptional.get();
     }
 
-    public Borrowed_Book update(Long borrow_id, Borrowed_Book borrow) {
-        Optional<Borrowed_Book> borrowOptional = borrowed_bookRepository.findById(borrow_id);
+    public BorrowedBook update(int borrow_id, BorrowedBook borrow) {
+        Optional<BorrowedBook> borrowOptional = borrowed_bookRepository.findById(borrow_id);
         if (borrowOptional.isEmpty()) {
             log.error("Book Not Found");
             throw new ResponseStatusException(
                     org.springframework.http.HttpStatus.NOT_FOUND, "Borrow not found");
         }
-        Borrowed_Book existingBorrow = borrowOptional.get();
+        BorrowedBook existingBorrow = borrowOptional.get();
         existingBorrow.setBorrow_date(borrow.getBorrow_date());
         existingBorrow.setReturn_date(borrow.getReturn_date());
         existingBorrow.setBook(borrow.getBook());
@@ -70,7 +70,7 @@ public class Borrowed_BookService {
         return borrowed_bookRepository.save(existingBorrow  );
     }
 
-    public void delete(Long borrow_id) {
+    public void delete(int borrow_id) {
         borrowed_bookRepository.deleteById(borrow_id);
         log.warn("Borrowed Book Deleted");
     }

@@ -27,7 +27,7 @@ public class BookService {
         return bookRepository.save(book);
     }
 
-    public Book get(Long book_id) {
+    public Book get(int book_id) {
 
         Optional<Book> bookOptional = bookRepository.findById(book_id);
         if (bookOptional.isEmpty()) {
@@ -38,7 +38,7 @@ public class BookService {
         return bookOptional.get();
     }
 
-    public Book update(Long book_id, Book book) {
+    public Book update(int book_id, Book book) {
         Optional<Book> bookOptional = bookRepository.findById(book_id);
         if (bookOptional.isEmpty()) {
             log.error("Book not found when updating for id {}", book_id);
@@ -55,7 +55,7 @@ public class BookService {
         return bookRepository.save(existingBook);
     }
 
-    public void delete(Long book_id) {
+    public void delete(int book_id) {
         bookRepository.deleteById(book_id);
         log.warn("Book Deleted");
     }
