@@ -1,15 +1,20 @@
 package com.example.SpringBootDemo2.models;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import jakarta.persistence.*;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Past;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDate;
 import java.util.Date;
 
+@Setter
+@Getter
 @Entity
 @Table(name = "Members")
 public class Member {
@@ -22,9 +27,10 @@ public class Member {
     private String name;
     @Email
     private String email;
-    @Past
+
     private LocalDate join_date;
 
+    @JsonCreator(mode = JsonCreator.Mode.DISABLED)
     public Member(String name, String email, LocalDate join_date) {
         this.name = name;
         this.email = email;
@@ -34,39 +40,6 @@ public class Member {
     public Member() {
 
     }
-
-    public int getMember_id() {
-        return member_id;
-    }
-
-    public void setMember_id(int member_id) {
-        this.member_id = member_id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public LocalDate getJoin_date() {
-        return join_date;
-    }
-
-    public void setJoin_date(LocalDate join_date) {
-        this.join_date = join_date;
-    }
-
 
 
 }
