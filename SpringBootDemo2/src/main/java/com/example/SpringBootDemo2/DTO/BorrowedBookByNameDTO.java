@@ -1,11 +1,11 @@
 package com.example.SpringBootDemo2.DTO;
 
-public class BorrowedBookDTO {
+public class BorrowedBookByNameDTO {
     private final String bookTitle;
     private final String memberName;
     private final String author;
 
-    public BorrowedBookDTO(String bookTitle, String memberName, String author) {
+    public BorrowedBookByNameDTO(String bookTitle, String memberName, String author) {
         this.bookTitle = bookTitle;
         this.memberName = memberName;
         this.author = author;

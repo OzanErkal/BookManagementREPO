@@ -1,6 +1,7 @@
 package com.example.SpringBootDemo2.controllers;
 
-import com.example.SpringBootDemo2.DTO.BorrowedBookDTO;
+import com.example.SpringBootDemo2.DTO.BorrowRequestDTO;
+import com.example.SpringBootDemo2.DTO.BorrowedBookByNameDTO;
 import com.example.SpringBootDemo2.models.BorrowedBook;
 import com.example.SpringBootDemo2.services.BorrowedBookService;
 import jakarta.validation.Valid;
@@ -17,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("borrow")
+@RequestMapping("borrowedBook")
 public class BorrowedBookController {
     @Autowired
     BorrowedBookService borrowed_bookService;
@@ -48,5 +49,11 @@ public class BorrowedBookController {
     }
 
     @GetMapping(value = "/name/{name}", produces = "application/json")
-    public List<BorrowedBookDTO> getByName(@PathVariable String name) {return borrowed_bookService.findBorrowedBooksByMemberName(name);}
+    public List<BorrowedBookByNameDTO> getByName(@PathVariable String name) {return borrowed_bookService.findBorrowedBooksByMemberName(name);}
+
+    @PostMapping(value = "/borrow", produces = "application/json")
+    public BorrowedBook borrowBook(@RequestBody @Valid BorrowRequestDTO borrowRequestDTO){return borrowed_bookService.borrowBook(borrowRequestDTO);}
+
+    @PutMapping(value = "/return/{id}", produces = "application/json")
+    public BorrowedBook returnBook(@PathVariable int id){return borrowed_bookService.returnBook(id);}
 }
