@@ -20,8 +20,12 @@ import java.util.List;
 @RestController
 @RequestMapping("borrowedBook")
 public class BorrowedBookController {
-    @Autowired
-    BorrowedBookService borrowed_bookService;
+
+    private final BorrowedBookService borrowed_bookService;
+
+    public BorrowedBookController(BorrowedBookService borrowed_bookService) {
+        this.borrowed_bookService = borrowed_bookService;
+    }
 
     @GetMapping(value = "/", produces = "application/json")
     public List<BorrowedBook> getBorrowed_Books() {

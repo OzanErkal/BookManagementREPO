@@ -14,8 +14,11 @@ import java.util.Optional;
 @Slf4j
 public class BookService {
 
-    @Autowired
-    private BookRepository bookRepository;
+    private final BookRepository bookRepository;
+
+    public BookService(BookRepository bookRepository) {
+        this.bookRepository = bookRepository;
+    }
 
     public List<Book> list() {
         log.info("All Books Listed");

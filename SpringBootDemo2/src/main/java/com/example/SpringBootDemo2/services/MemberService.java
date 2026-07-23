@@ -13,8 +13,12 @@ import java.util.Optional;
 @Slf4j
 public class MemberService {
 
-    @Autowired
-    private MemberRepository memberRepository;
+
+    private final MemberRepository memberRepository;
+
+    public MemberService(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
+    }
 
     public List<Member> list() {
         log.info("All Members Listed");
