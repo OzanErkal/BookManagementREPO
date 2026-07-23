@@ -3,13 +3,14 @@ services:
     build:
       context: .
     ports:
-      - "8080:8080"
+      - "${DB_PORT}:8080"
     environment:
       - SPRING_DATASOURCE_URL=jdbc:sqlserver://host.docker.internal:1433;databaseName=BooksDb;trustServerCertificate=true;encrypt=true
-      - SPRING_DATASOURCE_USERNAME=Dev
-      - SPRING_DATASOURCE_PASSWORD=SqlServer@123
+      - SPRING_DATASOURCE_USERNAME=${DB_USER}
+      - SPRING_DATASOURCE_PASSWORD=${SA_PASSWORD}
       - SPRING_DATASOURCE_DRIVER_CLASS_NAME=com.microsoft.sqlserver.jdbc.SQLServerDriver
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+
 
 volumes:
   mssql-data:
