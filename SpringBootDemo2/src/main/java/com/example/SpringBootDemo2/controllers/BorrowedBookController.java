@@ -5,7 +5,6 @@ import com.example.SpringBootDemo2.DTO.BorrowedBookByNameDTO;
 import com.example.SpringBootDemo2.models.BorrowedBook;
 import com.example.SpringBootDemo2.services.BorrowedBookService;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,8 +19,12 @@ import java.util.List;
 @RestController
 @RequestMapping("borrowedBook")
 public class BorrowedBookController {
-    @Autowired
-    BorrowedBookService borrowed_bookService;
+
+    private final BorrowedBookService borrowed_bookService;
+
+    public BorrowedBookController(BorrowedBookService borrowed_bookService) {
+        this.borrowed_bookService = borrowed_bookService;
+    }
 
     @GetMapping(value = "/", produces = "application/json")
     public List<BorrowedBook> getBorrowed_Books() {

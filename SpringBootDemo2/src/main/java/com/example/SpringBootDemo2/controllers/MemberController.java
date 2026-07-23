@@ -19,8 +19,13 @@ import java.util.List;
 @RestController
 @RequestMapping("members")
 public class MemberController {
+
+    private final MemberService memberService;
+
     @Autowired
-    MemberService memberService;
+    public MemberController(MemberService memberService) {
+        this.memberService = memberService;
+    }
 
     @GetMapping(value = "/", produces = "application/json")
     public List<Member> getMembers() {

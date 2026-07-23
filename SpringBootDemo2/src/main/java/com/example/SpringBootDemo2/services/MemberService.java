@@ -2,7 +2,6 @@ package com.example.SpringBootDemo2.services;
 import com.example.SpringBootDemo2.models.Member;
 import com.example.SpringBootDemo2.repositories.MemberRepository;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -13,8 +12,12 @@ import java.util.Optional;
 @Slf4j
 public class MemberService {
 
-    @Autowired
-    private MemberRepository memberRepository;
+
+    private final MemberRepository memberRepository;
+
+    public MemberService(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
+    }
 
     public List<Member> list() {
         log.info("All Members Listed");

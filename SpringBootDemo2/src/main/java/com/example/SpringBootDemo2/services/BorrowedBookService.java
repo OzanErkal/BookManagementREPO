@@ -9,7 +9,6 @@ import com.example.SpringBootDemo2.repositories.BookRepository;
 import com.example.SpringBootDemo2.repositories.BorrowedBookRepository;
 import com.example.SpringBootDemo2.repositories.MemberRepository;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -21,12 +20,18 @@ import java.util.Optional;
 @Slf4j
 public class BorrowedBookService {
 
-    @Autowired
-    private BorrowedBookRepository borrowed_bookRepository;
-    @Autowired
-    private BookRepository bookRepository;
-    @Autowired
-    private MemberRepository memberRepository;
+
+    private final BorrowedBookRepository borrowed_bookRepository;
+    private final BookRepository bookRepository;
+    private final MemberRepository memberRepository;
+
+    public BorrowedBookService(BorrowedBookRepository borrowed_bookRepository,
+                               BookRepository bookRepository,
+                               MemberRepository memberRepository) {
+        this.borrowed_bookRepository = borrowed_bookRepository;
+        this.bookRepository = bookRepository;
+        this.memberRepository = memberRepository;
+    }
 
     //LISTING ALL BORROWS
     public List<BorrowedBook> list() {
