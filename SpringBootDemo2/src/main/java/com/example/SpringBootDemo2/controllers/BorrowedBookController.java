@@ -5,7 +5,6 @@ import com.example.SpringBootDemo2.DTO.BorrowedBookByNameDTO;
 import com.example.SpringBootDemo2.models.BorrowedBook;
 import com.example.SpringBootDemo2.services.BorrowedBookService;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

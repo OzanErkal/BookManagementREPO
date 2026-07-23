@@ -2,7 +2,6 @@ package com.example.SpringBootDemo2.services;
 
 import com.example.SpringBootDemo2.models.Book;
 import com.example.SpringBootDemo2.repositories.BookRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 import lombok.extern.slf4j.Slf4j;
