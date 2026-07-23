@@ -18,7 +18,7 @@ target/
 *.iws
 *.iml
 *.ipr
-*.dev
+*.env
 
 ### NetBeans ###
 /nbproject/private/
@@ -32,3 +32,15 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Logs ###
+*.log
+logs/
+
+### Crash dumps ###
+hs_err_pid*.log
+replay _pid*.log
+
+### Local secrets ###
+application-dev.properties
+application-prod.properties
